@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE beans SYSTEM "http://www.springframework.org/dtd/spring-beans-2.0.dtd" PUBLIC
+"-//SPRING//DTD BEAN 2.0//EN"> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/context
+	                    http://www.springframework.org/schema/context/spring-context.xsd
+	                    http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/aop 
+						http://www.springframework.org/schema/aop/spring-aop.xsd">
+	<!-- <bean id="hello" class="com.tevop.Hello">
+	</bean> -->
+	<bean id = "userService" class="person.tevop.service.UserServiceImpl"></bean>
+	<bean id = "myAspect" class="person.tevop.aop.Myaspect"></bean>
+	<aop:config >
+		<aop:pointcut expression="execution(* person.tevop.service.*.*(..))" id="myPointCut"/>
+		<aop:advisor advice-ref="myAspect" pointcut-ref="myPointCut"/>
+	</aop:config>
+	
+	<!-- <bean class="com.tevop.MyProcessor"/> -->
+	<!-- <bean class="org.springframework.beans.factory.access.TestBean" id="beans1.bean1">
+	<property name="name">
+		<value>beans1.bean1</value>
+	/property>
+	</bean>
+	<bean class="org.springframework.beans.factory.access.TestBean" id="beans1.bean2">
+		<property name="name">
+			<value>bean2</value>
+		</property>
+		<property name="objRef">
+			<ref bean="beans1.bean2"/>
+		</property>
+	</bean> -->
+</beans>
